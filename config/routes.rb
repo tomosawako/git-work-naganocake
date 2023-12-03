@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/about' => "homes#about", as: 'about'
   get "customers/mypage" => "customers#show"
-  resources :customers, only: [:edit, :update]
+  get "customers/information/edit" => "customers#edit"
+  patch "customers/information" => "customers#update"
   end
 
   namespace :admin do
