@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :customer_status, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -31,6 +31,15 @@ class Public::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(resource)
     root_path
+  end
+
+  private
+
+  # アクティブであるかを判断するメソッド
+  def customer_status
+    customer = Customer.find_by(email: params[:customer][:email])
+    return if customer.nil?
+    return unless customer.valid_password?(params[:customer][:password])
   end
 
 end
