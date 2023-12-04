@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   scope module: 'public' do
   root to: 'homes#top'
   get '/about' => "homes#about", as: 'about'
-  get "customers/mypage" => "customers#show"
+  get "customers/mypage" => "customers#show", as: 'mypage'
   get "customers/information/edit" => "customers#edit"
   patch "customers/information" => "customers#update"
   get "customers/withdraw_confirm"
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top'
+    resources :genres, only: [:index, :create, :edit ,:update]
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
