@@ -1,17 +1,21 @@
 <h4 class="my-5 mx-5">商品新規登録</h4>
 <div class="mb-5">
   <%= form_with model: @item, url: admin_items_path, mehod: :post do |f| %>
+  <%= f.label :"商品画像", class: "mx-5 my-1" %>
+  <%= f.file_field :image, accept: "image/*", class: "mx-4 my-1" %><br>
   <%= f.label :"商品名", class: "mx-5" %>
-  <%= f.text_field :name, class: "mx-4" %>
+  <%= f.text_field :name, class: "mx-4 my-1" %><br>
   <%= f.label :"商品説明", class: "mx-5" %>
-  <%= f.text_area :introduction, class: "mx-4" %>
-  <%= f.label :"ジャンル名", class: "mx-5" %>
-
+  <%= f.text_area :introduction, class: "mx-4 my-1" %><br>
+  <%= f.label :"ジャンル", class: "mx-5" %>
+  <%= f.select :genre_id, optioons_form_colllection_for_select(Genre.all, :id, :name) %>
   <%= f.label :"税抜価格", class: "mx-5" %>
-  <%= f.text_area :price, class: "mx-4" %>円
+  <%= f.text_field :price, class: "mx-4 my-1" %>円<br>
   <%= f.label :"販売ステータス", class: "mx-5" %>
-
-
+  <%= f.radio_button :is_active, "true" %>
+  <%= f.label :is_active_true, "販売中" %>
+  <%= f.radio_button :is_active, "false" %>
+  <%= f.label :is_active_false, "販売停止中" %><br>
   <%= f.submit '新規登録', class: "btn btn-success ml-4" %>
   <% end %>
 </div>
