@@ -7,5 +7,7 @@ class Item < ApplicationRecord
     imege
   end
 
+  has_many :genres, dependent: :destroy
+
 end
 
