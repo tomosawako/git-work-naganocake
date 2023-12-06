@@ -1,0 +1,17 @@
+<h4 class="my-5 mx-5">商品新規登録</h4>
+<div class="mb-5">
+  <%= form_with model: @item, url: admin_items_path, mehod: :post do |f| %>
+  <%= f.label :"商品名", class: "mx-5" %>
+  <%= f.text_field :name, class: "mx-4" %>
+  <%= f.label :"商品説明", class: "mx-5" %>
+  <%= f.text_area :introduction, class: "mx-4" %>
+  <%= f.label :"ジャンル名", class: "mx-5" %>
+
+  <%= f.label :"税抜価格", class: "mx-5" %>
+  <%= f.text_area :price, class: "mx-4" %>円
+  <%= f.label :"販売ステータス", class: "mx-5" %>
+
+
+  <%= f.submit '新規登録', class: "btn btn-success ml-4" %>
+  <% end %>
+</div>
