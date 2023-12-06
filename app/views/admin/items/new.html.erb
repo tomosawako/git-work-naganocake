@@ -12,9 +12,9 @@
   <%= f.label :"税抜価格", class: "col-2 ml-5" %>
   <%= f.number_field :price, class: "my-1" %>円<br>
   <%= f.label :"販売ステータス", class: "col-2 ml-5" %>
-  <%= f.radio_button :is_active, "true" %>
+  <%= f.radio_button :is_active, true %>
   <%= f.label :is_active_true, "販売中", class: "mr-5" %>
-  <%= f.radio_button :is_active, "false" %>
+  <%= f.radio_button :is_active, false %>
   <%= f.label :is_active_false, "販売停止中" %><br>
 　<div class="text-center">
 　  <%= f.submit '新規登録', class: "btn btn-success" %>
