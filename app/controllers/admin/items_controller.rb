@@ -13,6 +13,10 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   private
 
   def item_params
