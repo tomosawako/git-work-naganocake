@@ -10,6 +10,10 @@ class Item < ApplicationRecord
     image
   end
 
+  def add_tax_price
+        (self.price * 1.10).round
+  end
+
   belongs_to :genre
 
 end

@@ -1,0 +1,22 @@
+<h4 class="my-5 mx-5">商品編集</h4>
+<div class="ml-6 mb-6">
+  <%= form_with model: @item, url: admin_item_path,method: :patch do |f| %>
+  <%= f.label :"商品画像", class: "col-2 ml-5 my-1" %>
+  <%= f.file_field :image, accept: "image/*", class: "my-1" %><br>
+  <%= f.label :"商品名", class: "col-2 ml-5" %>
+  <%= f.text_field :name %><br>
+  <%= f.label :"商品説明", class: "col-2 ml-5" %>
+  <%= f.text_area :introduction %><br>
+  <%= f.label :"ジャンル", class: "col-2 ml-5" %>
+  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %><br>
+  <%= f.label :"税抜価格", class: "col-2 ml-5" %>
+  <%= f.number_field :price %>円<br>
+  <%= f.label :"販売ステータス", class: "col-2 ml-5" %>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active_true, "販売中", class: "mr-5" %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active_false, "販売停止中" %><br>
+　<div class="text-center">
+  <%= f.submit '変更を保存', class: "btn btn-success ml-4" %>
+  <% end %>
+</div>

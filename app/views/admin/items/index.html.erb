@@ -1,6 +1,8 @@
-<h4 class="my-5 mx-5">商品一覧</h4>
-<%= link_to "+", "/admin/items/new", class:"btn btn-light rounded-circle p-0" %>
-
+<div class="container">
+  <div class="row">
+    <h4 class="col-6 my-5 mx-5">商品一覧</h4>
+    <%= link_to "+", "/admin/items/new", class:"btn btn-light rounded-circle p-0" %>
+  </div>
 
 <table class="table">
   <thead class="thead-light">
@@ -32,4 +34,7 @@
     </tr>
   <% end %>
 </table>
-
+<div class="text-center">
+  <%= paginate @items %>
+</div>
+</div>
