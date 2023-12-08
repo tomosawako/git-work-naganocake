@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <h4 class="col-6 my-5 mx-5">商品一覧</h4>
-    <%= link_to "+", "/admin/items/new", class:"btn btn-light rounded-circle p-0" %>
+    <div class="d-flex align-items-center">
+      <%= link_to "+", "/admin/items/new", class:"btn btn-light rounded-circle" %>
+    </div>
   </div>
 
 <table class="table">
@@ -34,7 +36,7 @@
     </tr>
   <% end %>
 </table>
-<div class="text-center">
+<div class="col d-flex align-items-center text-align-center">
   <%= paginate @items %>
 </div>
 </div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch "customers/information" => "customers#update"
   get "customers/withdraw_confirm"
   patch "customers/withdraw"
+  resources :items, only: [:index, :show]
   end
 
   namespace :admin do
