@@ -1,17 +1,28 @@
 <div class="container">
   <div class="row mt-5">
-    <h3><b>ジャンル一覧</b></h3>
-    <h5 class="align-bottom">（全<%= @items.count %>件）</h5>
+    <div class="col-12">
+      <h3>
+        <b>ジャンル一覧</b>
+        <small>（全<%= @items.count %>件）</small>
+      </h3>
+    </div>
     <% @items.each do |item| %>
     <div class="col-md-3">
     <div class="img-fluid">
+      <%= link_to item_path(item.id) do %>
       <%= image_tag item.get_image %>
+      <% end %>
     </div>
-    <%= item.name %><br>
-    ￥<%= item.price.to_s(:delimited) %>
+    <%= item.name %>
+    <br>
+    ¥<%= item.price.to_s(:delimited) %>
     </div>
     <% end %>
   </div>
+  <div class="col d-flex align-items-center text-align-center">
+  <%= paginate @items %>
+</div>
+</div>
 </div>
 
 

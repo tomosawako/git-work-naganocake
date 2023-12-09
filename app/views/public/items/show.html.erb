@@ -1,0 +1,23 @@
+<div class="row mt-5">
+  <div class="img-fluid col-md-3 ml-5">
+    <%= image_tag @item.get_image %>
+  </div>
+  <div class="col-md-5 ml-5">
+    <h4>
+      <b><%= @item.name %></b>
+    </h4>
+    <p class="mb-5">
+      <%= @item.introduction %>
+    </p>
+    <h4>
+      ¥<%= @item.add_tax_price.to_s(:delimited) %>
+      <small>(税込)</small>
+    </h4>
+    <div class="d-flex align-items-center row">
+      <%= link_to "カートに入れる", "#", class:"btn btn-success ml-3 my-2" %>
+    </div>
+  </div>
+</div>
+
+
+

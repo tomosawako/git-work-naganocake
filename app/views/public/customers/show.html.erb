@@ -6,7 +6,7 @@
       <div class="row">
         <div class="col">
           <div class="d-flex align-items-center">
-            <h3><strong>登録情報</strong></h3>
+            <h4><strong>登録情報</strong></h4>
             <%= link_to "編集する", customers_information_edit_path, class:"btn btn-success ml-3" %>
           </div>
           <table class="table table-bordered my-3">
@@ -39,16 +39,17 @@
             <td class="bg-light">メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
+
         </table>
       </div>
     </div>
     <div class="d-flex align-items-center row">
-      <h3 class="col-4"><strong>配送先</strong></h3>
-      <%= link_to "一覧を見る", "#", class:"btn btn-primary ml-3" %>
+      <h4 class="col-4"><strong>配送先</strong></h4>
+      <%= link_to "一覧を見る", "#", class:"btn btn-primary ml-3 my-2" %>
     </div>
 
     <div class="d-flex align-items-center row">
-      <h3 class="col-4"><strong>注文履歴</strong></h3>
-      <%= link_to "一覧を見る", "#", class:"btn btn-primary ml-3" %>
+      <h4 class="col-4"><strong>注文履歴</strong></h4>
+      <%= link_to "一覧を見る", "#", class:"btn btn-primary ml-3 my-2" %>
     </div>
   </div>
