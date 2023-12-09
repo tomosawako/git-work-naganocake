@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row mb-4">
+  <div class="row my-5">
     <div class="col-sm-1"></div>
     <h3 class="border border-secondary bg-light">
       <%= @customer.last_name %><%= @customer.first_name %>
@@ -7,10 +7,9 @@
     </h3>
   </div>
 
-    <%= form_with model: @customer, url: admin_customers_path, method: :patch do |f| %>
+    <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
     <div class="form-group row">
     <%= f.label :customer_id, "会員ID",class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
     <div class="col-sm-3">
       <%= @customer.id %>
     </div>
@@ -18,7 +17,6 @@
 
     <div class="form-group row">
     <%=f.label :name, "氏名", class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
     <div class="col-sm-3">
       <%= f.text_field :last_name, class:"form-control" %>
     </div>
@@ -29,7 +27,6 @@
 
   <div class="form-group row">
     <%=f.label :name_kana, "フリガナ", class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
     <div class="col-sm-3">
       <%= f.text_field :last_name_kana, class:"form-control" %>
     </div>
@@ -40,7 +37,6 @@
 
   <div class="form-group row">
     <%= f.label :postal_code, "郵便番号",class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
     <div class="col-sm-3">
       <%= f.text_field :postal_code, class:"form-control" %>
     </div>
@@ -48,40 +44,39 @@
 
   <div class="form-group row">
     <%= f.label :address, "住所",class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-7">
+    <div class="col-sm-8">
       <%= f.text_field :address, class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= f.label :telephone_number, "電話番号",class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <%= f.text_field :telephone_number, class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= f.label :email, "メールアドレス",class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
     </div>
   </div>
 
   <div class="form-group row">
     <%= f.label :status, "会員ステータス",class:"col-sm-3 control-label" %>
-    <div class="col-sm-1"></div>
-    <div class="col-sm-3">
-
+    <div class="col-sm-5">
+    <%= f.radio_button :is_active, true %>
+    <%= f.label :is_active_true, "有効", class: "mr-5" %>
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :is_active_false, "退会" %><br>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
-    <%= f.submit "編集内容を保存", class:"btn btn-success mr-4" %>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-5">
+    <%= f.submit "変更を保存", class:"btn btn-success mr-4" %>
     </div>
   </div>
 
