@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "customers/withdraw_confirm"
   patch "customers/withdraw"
   resources :items, only: [:index, :show]
+  resources :addresses, only: [:index, :create, :edit ,:update, :destroy]
   end
 
   namespace :admin do
