@@ -51,7 +51,7 @@
          <tr>
            <td>
              <%= link_to "編集する", edit_address_path(address.id), class:"btn btn-success ml-3 my-2" %>
-             <%= link_to "削除する", addresses_path, method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-danger ml-3 my-2" %>
+             <%= link_to "削除する", address, method: :delete, data: { confirm: "本当に削除しますか？" }, class:"btn btn-danger ml-3 my-2" %>
            </td>
          </tr>
          <% end %>
