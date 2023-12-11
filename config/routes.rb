@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'cart_items/index'
+  end
   scope module: 'public' do
   root to: 'homes#top'
   get '/about' => "homes#about", as: 'about'
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   patch "customers/withdraw"
   resources :items, only: [:index, :show]
   resources :addresses, only: [:index, :create, :edit ,:update, :destroy]
+  resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 
   namespace :admin do
