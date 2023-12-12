@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   patch "customers/withdraw"
   resources :items, only: [:index, :show]
   resources :addresses, only: [:index, :create, :edit ,:update, :destroy]
-  resources :cart_items, only: [:index, :create, :update, :destroy]
+  resources :cart_items, only: [:index, :create, :update, :destroy] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   end
 
   namespace :admin do
