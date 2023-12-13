@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'orders/index'
+    get 'orders/new'
+    get 'orders/show'
+  end
+  namespace :public do
     get 'cart_items/index'
   end
   scope module: 'public' do
@@ -18,6 +23,7 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
+  resources :orders, only: [:index, :new, :show]
   end
 
   namespace :admin do

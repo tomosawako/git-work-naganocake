@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <h3 class="border border-secondary bg-light">注文情報入力</h3>
+  </div>
+
+  <%= form_with model: @order, method: :post do |f| %>
+　<div class="form-group row">
+    <div class="col-sm">
+      <h3><b>支払方法</b></h3>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), class:"ml-5" %>
+      <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "control-form" %><br>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-5" %>
+      <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "control-form" %>
+    </div>
+  </div>
+
+  <div class="form-group row" >
+    <div class="col-sm">
+      <h3><b>お届け先</b></h3>
+      <%= Order.customer.address %>
+    </div>
+  </div>
+
+  <% end %>
+
+</div>
