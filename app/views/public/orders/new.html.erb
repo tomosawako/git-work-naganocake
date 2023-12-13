@@ -7,18 +7,50 @@
   <%= form_with model: @order, method: :post do |f| %>
 　<div class="form-group row">
     <div class="col-sm">
-      <h3><b>支払方法</b></h3>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0), class:"ml-5" %>
+      <h4><b>支払方法</b></h4>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0), class:"ml-4" %>
       <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card], class: "control-form" %><br>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-5" %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-4" %>
       <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer], class: "control-form" %>
     </div>
   </div>
 
-  <div class="form-group row" >
-    <div class="col-sm">
-      <h3><b>お届け先</b></h3>
-      <%= Order.customer.address %>
+  <h4><b>お届け先</b></h4>
+  <div class="form-group row">
+    <div class="col-sm-12"></div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12 ml-4">
+      <%= f.radio_button :select_address, 1 %>
+      <%= f.label :select_address, "登録済住所から選択", class: "control-form" %>
+    </div>
+    <div class="col-sm-12 ml-5">
+      <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :full_address), class:"ml-5" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-12 ml-4">
+      <%= f.radio_button :select_address, 2 %>
+      <%= f.label :new_address, "新しいお届け先", class: "control-form" %><br>
+    </div>
+  </div>
+
+  <div class="form-group row">
+      <div class="control-label col-sm-3 ml-5">
+        <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
+      </div>
+      <div class="foem-control col-sm-4">
+        <%= f.text_field :postal_code %>
+      </div>
+  </div>
+
+        </div>
+        <%= f.label :address, "住所", class: "col-sm-3 control-form" %>
+        <%= f.text_field :address, class:"form-control" %>
+        <%= f.label :address, "宛名", class: "col-sm-3 control-form" %>
+        <%= f.text_field :name, class:"form-control" %>
     </div>
   </div>
 

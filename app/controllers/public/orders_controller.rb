@@ -1,9 +1,12 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
   end
 
   def new
     @order = Order.new
+    @addresses = Address.all
   end
 
   def create
