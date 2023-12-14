@@ -4,7 +4,7 @@
     <h3 class="border border-secondary bg-light">注文情報入力</h3>
   </div>
 
-  <%= form_with model: @order, method: :post do |f| %>
+  <%= form_with model: @order, url: '/orders/confirm', method: :post do |f| %>
 　<div class="form-group row">
     <div class="col-sm">
       <h4><b>支払方法</b></h4>
@@ -17,7 +17,14 @@
 
   <h4><b>お届け先</b></h4>
   <div class="form-group row">
-    <div class="col-sm-12"></div>
+    <div class="col-sm-12 ml-4">
+      <%= f.radio_button :select_address, 0 %>
+      <%= f.label :current_address, "ご自身の住所", class: "control-form" %>
+    </div>
+    <div class="col-sm-12 ml-5">
+      <%= current_customer.full_address %><br>
+      <%= current_customer.last_name %><%= current_customer.first_name %>
+    </div>
   </div>
 
   <div class="form-group row">
@@ -38,20 +45,24 @@
   </div>
 
   <div class="form-group row">
-      <div class="control-label col-sm-3 ml-5">
-        <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
-      </div>
-      <div class="foem-control col-sm-4">
-        <%= f.text_field :postal_code %>
-      </div>
+    <%= f.label :postal_code, "郵便番号（ハイフンなし）", class:"control-label col-sm-3 ml-5" %>
+    <%= f.text_field :postal_code, class:"foem-control col-sm-3" %>
   </div>
 
-        </div>
-        <%= f.label :address, "住所", class: "col-sm-3 control-form" %>
-        <%= f.text_field :address, class:"form-control" %>
-        <%= f.label :address, "宛名", class: "col-sm-3 control-form" %>
-        <%= f.text_field :name, class:"form-control" %>
-    </div>
+  <div class="form-group row">
+    <%= f.label :address, "住所",class:"control-label col-sm-3 ml-5" %>
+    <%= f.text_field :address, class:"foem-control col-sm-6" %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :name, "宛名",class:"control-label col-sm-3 ml-5" %>
+    <%= f.text_field :name, class:"foem-control col-sm-3" %>
+  </div>
+
+  <div class="form-group row ">
+    <div class="col-sm-4"></div>
+    <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+    <div class="col-sm-4"></div></div>
   </div>
 
   <% end %>

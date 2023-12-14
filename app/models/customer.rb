@@ -9,6 +9,10 @@ class Customer < ApplicationRecord
     super && (is_active == true)
   end
 
+  def full_address
+    '〒' + postal_code + ' ' + address
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

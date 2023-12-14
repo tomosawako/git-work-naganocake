@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'orders/index'
-    get 'orders/new'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
   scope module: 'public' do
   root to: 'homes#top'
   get '/about' => "homes#about", as: 'about'
@@ -24,7 +16,9 @@ Rails.application.routes.draw do
     end
   end
   resources :orders, only: [:index, :new, :show]
+  post "orders/confirm"
   end
+
 
   namespace :admin do
     get 'homes/top'

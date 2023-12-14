@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <h3 class="border border-secondary bg-light">注文情報入力</h3>
+  </div>
+
+  <div class="row mb-2 mt-4">
+    <div class="col-sm-1"></div>
+    <table class="table table-bordered border-black">
+      <thead class="thead-light">
+        <tr>
+          <td>商品名</td>
+          <td>単価(税込)</td>
+          <td>数量</td>
+          <td>小計</td>
+        </tr>
+      </thead>
+      <% @cart_items.each do |cart_item| %>
+      <tbody>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.get_image %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+
+    </table>
+  </div>
+
+
+
