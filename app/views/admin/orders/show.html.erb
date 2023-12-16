@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row mt-5 mb-3">
+    <div class="col-sm-1"></div>
+    <h4 class="border border-secondary bg-light">注文履歴詳細</h4>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-4">
+      <h5><b>購入者</b></h5>
+    </div>
+    <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h5><b>注文日</b></h5>
+    </div>
+    <%= @order.created_at.strftime('%Y/%m/%d') %>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h5><b>配送先</b></h5>
+    </div>
+    <%= @order.address %>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h5><b>支払方法</b></h5>
+    </div>
+    <%= @order.payment_method_i18n %>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h5><b>注文ステータス</b></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="co-sm-1"></div>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+        </tr>
+      </thead>
+      <% @order_details.each do |order_detail| %>
+      <tbody>
+        <tr>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="co-sm-1"></div>
+  </div>
+
+</div>

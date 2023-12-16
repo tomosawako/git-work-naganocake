@@ -50,6 +50,9 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
+  def completed
+  end
+
   private
 
   def order_params
