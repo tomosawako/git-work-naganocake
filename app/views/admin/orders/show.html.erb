@@ -1,29 +1,28 @@
 <div class="container">
-  <div class="row mt-5 mb-3">
+  <div class="row mt-5 mb-2">
     <div class="col-sm-1"></div>
     <h4 class="border border-secondary bg-light">注文履歴詳細</h4>
   </div>
 
-  <div class="row">
-
+  <div class="row mb-1">
     <div class="col-sm-4">
       <h5><b>購入者</b></h5>
     </div>
     <%= @order.customer.last_name %> <%= @order.customer.first_name %>
   </div>
-  <div class="row">
+  <div class="row mb-1">
     <div class="col-sm-4">
       <h5><b>注文日</b></h5>
     </div>
     <%= @order.created_at.strftime('%Y/%m/%d') %>
   </div>
-  <div class="row">
+  <div class="row mb-1">
     <div class="col-sm-4">
       <h5><b>配送先</b></h5>
     </div>
     <%= @order.address %>
   </div>
-  <div class="row">
+  <div class="row mb-1">
     <div class="col-sm-4">
       <h5><b>支払方法</b></h5>
     </div>
@@ -35,30 +34,47 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="co-sm-1"></div>
+  <div class="row mt-4">
+    <div class="co-sm-8">
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th>商品名</th>
-          <th>単価(税込)</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th>制作ステータス</th>
+          <th><b>商品名</b></th>
+          <th><b>単価(税込)</b></th>
+          <th><b>数量</b></th>
+          <th><b>小計</b></th>
+          <th><b>制作ステータス</b></th>
         </tr>
       </thead>
       <% @order_details.each do |order_detail| %>
       <tbody>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.price %></td>
+          <td><%= order_detail.price.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.subtotal.to_s(:delimited) %></td>
         </tr>
+        <% @sum += order_detail.subtotal %>
       <% end %>
       </tbody>
     </table>
-    <div class="co-sm-1"></div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="co-sm-3">
+      <table class="table table-borderless">
+        <tr>
+          <th><h5><b>商品合計</b></h5></th>
+          <td><%= @sum.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th><h5><b>送料</b></h5></th>
+          <td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr></tr>
+          <th><h5><b>請求額合計</b></h5></th>
+          <td><%= @order.total_payment.to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-
 </div>

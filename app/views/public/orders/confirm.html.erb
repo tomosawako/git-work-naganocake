@@ -69,7 +69,7 @@
         <%= f.hidden_field :address, value: @order.address %>
         <%= f.hidden_field :name, value: @order.name %>
         <%= f.hidden_field :shipping_cost, value: 800 %>
-        <%= f.hidden_field :total_payment, value: (@sum + 800).to_s(:delimited) %>
+        <%= f.hidden_field :total_payment, value: (@sum + 800) %>
         <%= f.hidden_field :payment_method, value: @order.payment_method %>
         <%= f.submit "注文を確定する", class:"btn btn-success" %>
       <% end %>

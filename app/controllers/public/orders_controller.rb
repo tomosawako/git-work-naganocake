@@ -29,8 +29,6 @@ class Public::OrdersController < ApplicationController
       render :confirm
   end
 
-
-
   def create
     order = Order.new(order_params)
     order.save
@@ -40,7 +38,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
-      @order_detail.price = cart_item.item.with_tax_price.to_s(:delimited)
+      @order_detail.price = cart_item.item.with_tax_price
       @order_detail.save
     end
     CartItem.destroy_all
