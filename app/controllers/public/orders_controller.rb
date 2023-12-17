@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.save
     end
     CartItem.destroy_all
-    redirect_to orders_completed_path
+    redirect_to completed_orders_path
   end
 
   def show

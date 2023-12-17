@@ -18,12 +18,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :new, :show, :create] do
    collection do
     post "confirm"
-  end
-  member do
     get "completed"
   end
 end
-
   end
 
 
