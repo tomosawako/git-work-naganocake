@@ -20,7 +20,9 @@
     <div class="col-sm-4">
       <h5><b>配送先</b></h5>
     </div>
-    <%= @order.address %>
+    〒<%= @order.postal_code %>
+    <%= @order.address %><br>
+    <%= @order.name %>
   </div>
   <div class="row mb-1">
     <div class="col-sm-4">
@@ -36,7 +38,7 @@
 
   <div class="row mt-4">
     <div class="co-sm-8">
-    <table class="table">
+    <table class="table table-borderless">
       <thead class="thead-light">
         <tr>
           <th><b>商品名</b></th>
