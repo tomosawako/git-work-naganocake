@@ -34,6 +34,7 @@
     <div class="col-sm-4">
       <h5><b>注文ステータス</b></h5>
     </div>
+    <%= @order.status_i18n %>
   </div>
 
   <div class="row mt-4">
@@ -55,6 +56,7 @@
           <td><%= order_detail.price.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.subtotal.to_s(:delimited) %></td>
+          <td><%= order_detail.making_status_i18n %></td>
         </tr>
         <% @sum += order_detail.subtotal %>
       <% end %>
