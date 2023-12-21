@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :customers, only: [:index, :show, :edit ,:update]
     resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
   end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {

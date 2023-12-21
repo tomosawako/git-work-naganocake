@@ -34,8 +34,11 @@
     <div class="col-sm-4">
       <h5><b>注文ステータス</b></h5>
     </div>
-    <%= @order.status_i18n %>
+    <%= form_with model: @order, url:admin_order_path(@order.id), method: :patch do |f| %>
+    <%= f.select :status, Order.statuses_i18n.invert %>
+    <%= f.submit "更新", class:"btn btn-success ml-3" %>
   </div>
+  <% end %>
 
   <div class="row mt-4">
     <div class="co-sm-8">
@@ -56,7 +59,12 @@
           <td><%= order_detail.price.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td><%= order_detail.subtotal.to_s(:delimited) %></td>
-          <td><%= order_detail.making_status_i18n %></td>
+          <td>
+            <%= form_with model: order_detail, url:admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+            <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
+            <%= f.submit "更新", class:"btn btn-success ml-3" %>
+            <% end %>
+          </td>
         </tr>
         <% @sum += order_detail.subtotal %>
       <% end %>
