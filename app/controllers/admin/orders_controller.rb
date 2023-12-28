@@ -8,6 +8,10 @@ class Admin::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
+    if order.status == "confirm_payment"
+      @order_details = order.order_details
+      @order_details.update(making_status:"waiting_production")
+    end
     redirect_back(fallback_location: admin_homes_top_path)
   end
 
